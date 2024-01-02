@@ -29,6 +29,10 @@ Projenin bağlantı şemasını aşağıda bulabilirsiniz:
 - Wemos D1 Mini 5V pin --> Nextion ekran 5V pin
 - Wemos D1 Mini GND pin --> Nextion ekran GND pin
 
+## Nextion Ekran Uygulaması
+
+Projenin Nextion Editör Uygulamasının t0 ve t1 Textinin Ayarları ve Arka Plan Resminin Yüklenmesi.
+
 ![Ekran Görüntüsü (1)](https://github.com/recepuysal/Nextion-Ekran-Kullanimi/assets/148240525/2b46252e-78c8-4aa5-8679-3af5df19f762)
 
 
