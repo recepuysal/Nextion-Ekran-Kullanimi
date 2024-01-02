@@ -1,18 +1,33 @@
 # Nextion Ekran Kullanımı
 
-Bu proje, 2.4 inç Nextion ekranını Wemos D1 Mini mikrodenetleyici kartı ile kullanarak internetten saat ve tarih bilgisini alıp ekranda gösterme amacını taşımaktadır.
+Bu proje, Wemos D1 Mini mikrodenetleyici kartı ile 2.4 inç Nextion ekranını kullanarak internet üzerinden zaman bilgisini alıp ekrana yazdıran bir örnek uygulamadır.
 
-## Proje Açıklaması
+## Proje Amaçları
 
-Bu projede ESP8266 tabanlı Wemos D1 Mini mikrodenetleyici kartı kullanılarak, Nextion ekranı ile iletişim kurulmuş ve internetten NTP (Network Time Protocol) üzerinden zaman bilgisi alınarak ekrana yazdırılmıştır.
+- ESP8266 tabanlı Wemos D1 Mini kullanarak Nextion ekran ile iletişim kurmak.
+- NTP (Network Time Protocol) kullanarak internetten zaman bilgisi almak.
+- Alınan saat ve tarih bilgisini Nextion ekranında göstermek.
+
+## Projenin Özellikleri
+
+- Nextion ekranın temel özelliklerini kullanarak saat ve tarih bilgisini ekrana yazdırma.
+- WiFi bağlantısı üzerinden NTP kullanarak internetten zaman bilgisi alma.
+- EasyNextionLibrary kullanılarak kolayca Nextion ekran ile etkileşim sağlama.
 
 ## Kullanılan Kütüphaneler
 
-- [EasyNextionLibrary](https://github.com/itead/EasyNextionLibrary): Nextion ekran ile iletişim kurmak için kullanılan kütüphane.
-- [NTPClient](https://github.com/arduino-libraries/NTPClient): NTP protokolü kullanılarak internetten saat ve tarih bilgisi almak için kullanılan kütüphane.
+- [EasyNextionLibrary](https://github.com/itead/EasyNextionLibrary): Nextion ekran ile etkileşim için kullanılan kütüphane.
+- [NTPClient](https://github.com/arduino-libraries/NTPClient): NTP protokolü kullanarak internetten saat ve tarih bilgisi almak için kullanılan kütüphane.
 - [ESP8266WiFi](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html): ESP8266 tabanlı mikrodenetleyici kartının Wi-Fi bağlantısı için kullanılan kütüphane.
 
-## Bağlantılar
+## Bağlantı Şeması
 
-- [Nextion Resmi Websitesi](https://nextion.tech/)
-- [Wemos D1 Mini Resmi Websitesi](https://www.wemos.cc/en/latest/d1/index.html)
+Projenin bağlantı şemasını aşağıda bulabilirsiniz:
+
+- Wemos D1 Mini RX pin --> Nextion ekran TX pin
+- Wemos D1 Mini TX pin --> Nextion ekran RX pin
+- Wemos D1 Mini 5V pin --> Nextion ekran 5V pin
+- Wemos D1 Mini GND pin --> Nextion ekran GND pin
+
+
+
