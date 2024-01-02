@@ -1,14 +1,13 @@
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
 #include <NTPClient.h>
-
 #include "EasyNextionLibrary.h"
 
-EasyNex myNex(Serial); // EasyNextionLibrary nesnesi
+EasyNex myNex(Serial); // Nextion ekranı ile iletişim için EasyNextionLibrary nesnesi
 
 // WiFi bağlantı bilgileri
-const char *ssid = "Zyxel_FCC1";
-const char *password = "PJ3URR3YL8";
+const char *ssid = "WIFI_SSID";
+const char *password = "WIFI_PASSWORD";
 
 // NTP sunucu adresi
 const char *ntpServer = "tr.pool.ntp.org";
@@ -19,8 +18,8 @@ const long timeZoneOffset = 3 * 3600;
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, ntpServer, timeZoneOffset);
 
-float t0 = 0.0f;
-String t1 = ""; // t1 değişkeni tarih bilgisini içerir
+float saatDakika = 0.0f; // Saat ve dakikayı birleştirmek için kullanılacak değişken
+String tarihString = ""; // Tarih bilgisini içerecek değişken
 
 const int REFRESH_TIME = 1000;           // Nextion verilerini her 1000 ms'de yenileme süresi
 unsigned long refresh_timer = millis();  // Nextion sayfasını yenileme için zamanlayıcı
@@ -57,19 +56,19 @@ void loop() {
   int month = timeInfo->tm_mon + 1;
   int day = timeInfo->tm_mday;
 
-  // Saati t0 değişkenine kaydet
-  t0 = saat + dakika / 100.0; // Saati ve dakikayı birleştirerek ondalık formatta tut
+  // Saati saatDakika değişkenine kaydet
+  saatDakika = saat + dakika / 100.0; // Saati ve dakikayı birleştirerek ondalık formatta tut
 
-  // Saati Nextion ekrana yazdır
+  // Saati Nextion ekranına yazdır
   char buffer[10];
   sprintf(buffer, "%02d:%02d:%02d", saat, dakika, saniye);
   myNex.writeStr("t0.txt", buffer);
 
-  // Tarihi t1 değişkenine kaydet
-  t1 = String(day) + "/" + String(month) + "/" + String(year);
+  // Tarihi tarihString değişkenine kaydet
+  tarihString = String(day) + "/" + String(month) + "/" + String(year);
 
-  // Tarihi Nextion ekrana yazdır
-  myNex.writeStr("t1.txt", t1);
+  // Tarihi Nextion ekranına yazdır
+  myNex.writeStr("t1.txt", tarihString);
 
   // Belirli bir aralıkta Nextion ekranını güncelle
   if ((millis() - refresh_timer) > REFRESH_TIME) {
